@@ -7,7 +7,24 @@ const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
   function polybius(input, encode = true) {
-    // your solution code here
+    input = input.toLowerCase();
+    console.log(input);
+    let finalMessage = ' ';
+    const charNum = letter.charCodeAt() - 97;
+    for (let i=0; i < input.length; i++) {
+      const letter = input[i];
+      if (letter >= 'i') {
+      let row = Math.floor(charNum/5) + 1;
+      let column = charNum%5 + 1;
+      finalMessage += `${row}${column}`;
+        
+      } else if (letter < 'i') {
+      let row = Math.floor(charNum - 1/5) + 1;
+      let column = (charNum - 1)%5 + 1;
+      finalMessage += `${row}${column}`;
+      }
+      console.log(finalMessage);
+      console.log(row, column);
   }
 
   return {
