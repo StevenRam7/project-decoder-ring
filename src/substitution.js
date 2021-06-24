@@ -4,7 +4,7 @@
 // of the anonymous function on line 6
 
 const substitutionModule = (function () {
-  // you can add any code you want within this function scope
+  const romanAlphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   function substitution(input, alphabet, encode = true) {
     let finalMessage = '';
@@ -15,9 +15,10 @@ const substitutionModule = (function () {
     if (alphabet.length != 26) {
       return false;
     }
-    if (alphabet.length === 26) {
-      const mirrorAlphabet = alphabet;
-      console.log(alphabet, mirrorAlphabet);
+    for (let i=1; i < alphabet.length; i++) {
+     if (alphabet[i] === alphabet[0]) {
+      return false;
+      }
     }
     if (encode) {
     for (let i=0; i < input.length; i++) {
@@ -28,9 +29,8 @@ const substitutionModule = (function () {
       const letter = input.charCodeAt(i) - 97;
       finalMessage += alphabet[letter];
     }
-      console.log(finalMessage);
       return finalMessage;
-  }
+      }
     
     if (!encode) {
       for (let i=0; i < input.length; i++) {
@@ -38,9 +38,16 @@ const substitutionModule = (function () {
         finalMessage += ' ';
         continue;
       }
-        const letter = input[i];
-        finalMessage += String.fromCharCode(letter + 97);
-    }
+        //if (input[i] == '.') {
+         // finalMessage += '.';
+         // continue;
+        //}
+        for (let j=0; j < alphabet.length; j++) {
+        if (input[i] === alphabet[j]) {
+         finalMessage += romanAlphabet[j];
+        }
+      }
+      }
       console.log(finalMessage);
       return finalMessage;
   }
