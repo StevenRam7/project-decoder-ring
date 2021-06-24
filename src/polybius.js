@@ -111,8 +111,6 @@ const polybiusModule = (function () {
       return finalMessage;
     }
     if (!encode) {
-      console.log(input);
-
       let noSpaces = input.split(" ");
       let allNumbers = "";
       for (let i = 0; i < noSpaces.length; i++) {
@@ -156,7 +154,7 @@ const polybiusModule = (function () {
         finalMessage3 += finalMessage;
       }
       finalMessage3 += finalMessage2;
-
+//finalMessage for inputs w/o spaces, finalMessage2 for inputs w/ spaces, finalMessage3 for i/j adjustment
       for (let i = 0; i < finalMessage3.length; i++) {
         if (finalMessage3[i] == romanAlphabet[9]) {
           //check for the letter j
@@ -181,7 +179,6 @@ const polybiusModule = (function () {
         }
       }
       return finalMessage3;
-      //finalMessage for inputs w/o spaces, finalMessage2 for inputs w/ spaces, finalMessage3 for i/j adjustment
     }
   }
   return {
